@@ -32,22 +32,22 @@ function begin() {
         
       if (theURL.substr(0,4) == "http")  {
       
-         videoId = theURL.substr(31,42);
+         videoId = theURL.substr(31,11);
       }
       
       if (theURL.substr(0,5) == "https")  {
       
-         videoId = theURL.substr(32,43);
+         videoId = theURL.substr(32,11);
       }
       
       if (theURL.substr(0,3) == "www")  {
       
-         videoId = theURL.substr(24,35);
+         videoId = theURL.substr(24,11);
       }
       
       if (theURL.substr(0,7) == "youtube")  {
       
-         videoId = theURL.substr(20,31);
+         videoId = theURL.substr(20,11);
       }
       
       newURL = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&loop=1&playlist=' + videoId + '&controls=1';
