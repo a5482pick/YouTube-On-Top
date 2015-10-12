@@ -7,14 +7,14 @@ document.addEventListener('DOMContentLoaded', function () {
    whenReset.addEventListener('click', beginAgain);
 });
 
-
+//Called when the 'new' button is pressed.  Allows for further videos to be selected.
 function beginAgain() {
      
    document.getElementById("URLBox").value = "";         
    document.getElementById("theSelection").style.display = "initial";
 }
   
-               
+//Called when the 'submit' button is pressed.  
 function begin() {
 
    var theURL='';
@@ -24,37 +24,20 @@ function begin() {
    formatTheURL();
    arrangeWindow();
 
-
+   //Allow for any URL, as long as it contains a valid YouTube ID.
+   //Additonally, set the video to play on auto repeat.
    function formatTheURL() {
 
       theURL = document.getElementById("URLBox").value;
       
-        
-      if (theURL.substr(0,4) == "http")  {
-      
-         videoId = theURL.substr(31,11);
-      }
-      
-      if (theURL.substr(0,5) == "https")  {
-      
-         videoId = theURL.substr(32,11);
-      }
-      
-      if (theURL.substr(0,3) == "www")  {
-      
-         videoId = theURL.substr(24,11);
-      }
-      
-      if (theURL.substr(0,7) == "youtube")  {
-      
-         videoId = theURL.substr(20,11);
-      }
+      var matchIndex = /\?v=/.exec(theURL).index;
+      videoId = theURL.substr(matchIndex+3,11);
       
       newURL = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&loop=1&playlist=' + videoId + '&controls=1';
          
    }
    
-   
+   //Set the area for the video to play in.
    function arrangeWindow()  {
    
       document.getElementById("theSelection").style.display = "none";
