@@ -30,7 +30,7 @@ function begin() {
 
       theURL = document.getElementById("URLBox").value;
       
-      var matchIndex = /\?v=/.exec(theURL).index;
+      var matchIndex = /(\?v=)|(&v=)/.exec(theURL).index;
       videoId = theURL.substr(matchIndex+3,11);
       
       newURL = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&loop=1&playlist=' + videoId + '&controls=1';
